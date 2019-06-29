@@ -4,3 +4,28 @@ aladdintitle: Aladdin,year: 1992,imdb rating: 8.0,country: USA,language: English
 aladdintitle: Aladdin,year: 1992,imdb rating: 8.0,country: USA,language: English,plot: A kindhearted street urchin and a power-hungry Grand Vizier vie for a magic lamp that has the power to make their deepest wishes come true.,actors: Scott Weinger, Robin Williams, Linda Larkin, Jonathan Freemanaladdintitle: Aladdin,year: 1992,imdb rating: 8.0,country: USA,language: English,plot: A kindhearted street urchin and a power-hungry Grand Vizier vie for a magic lamp that has the power to make their deepest wishes come true.,actors: Scott Weinger, Robin Williams, Linda Larkin, Jonathan Freeman
 ------------------------------------------------------------
 
+title: Little Rascals,year: 2008,imdb rating: N/A,country: N/A,language: N/A,plot: N/A,actors: Phil Atenor, Jack Bloom, Fred Carter, Matt Jakes
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2019-10-17T20:00:00
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2019-10-19T20:00:00
+name of venue: LADY GAGA JAZZ & PIANO,venue location: Las Vegas,date: 2019-10-20T20:00:00
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2019-10-23T20:00:00
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2019-10-25T20:00:00
+name of venue: LADY GAGA JAZZ & PIANO,venue location: Las Vegas,date: 2019-10-26T20:00:00
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2019-10-31T20:00:00
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2019-11-02T20:00:00
+name of venue: LADY GAGA JAZZ & PIANO,venue location: Las Vegas,date: 2019-11-03T20:00:00
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2019-11-06T20:00:00
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2019-11-08T20:00:00
+name of venue: LADY GAGA JAZZ & PIANO,venue location: Las Vegas,date: 2019-11-09T20:00:00
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2019-12-28T20:00:00
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2019-12-30T20:00:00
+name of venue: LADY GAGA JAZZ & PIANO,venue location: Las Vegas,date: 2019-12-31T20:00:00
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2020-04-30T20:00:00
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2020-05-02T20:00:00
+name of venue: LADY GAGA JAZZ & PIANO,venue location: Las Vegas,date: 2020-05-03T20:00:00
+name of venue: LADY GAGA JAZZ & PIANO,venue location: Las Vegas,date: 2020-05-07T20:00:00
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2020-05-09T20:00:00
+name of venue: LADY GAGA JAZZ & PIANO,venue location: Las Vegas,date: 2020-05-10T20:00:00
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2020-05-13T20:00:00
+name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2020-05-15T20:00:00
+name of venue: LADY GAGA JAZZ & PIANO,venue location: Las Vegas,date: 2020-05-16T20:00:00
