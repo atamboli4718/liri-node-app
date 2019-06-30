@@ -9,12 +9,15 @@ display information from api to the screen
 require('dotenv').config();
 const inquirer = require('inquirer');
 const axios = require("axios");
+const qs = require('qs');
 var http = require("http");
 
 //apikeys
 const omdbKey = process.env.OMDB_apikey;
 const bandsKey = process.env.BANDSinTOWN_app_id;
-console.log(omdbKey);
+const spotifyId = process.env.SPOTIFY_ID;
+const spotifySecret = process.env.SPOTIFY_SECRET;
+let accessToken;
 
 const divider = "\n------------------------------------------------------------\n\n";
 var fs = require("fs");
@@ -92,28 +95,71 @@ function movieFun(movieSel) {
 }
 
 function songFun(songSel) {
-    axios.get('http://www.omdbapi.com/?t=' + movieSel + '&apikey=' + omdbKey).then(
-        function (response) {
-            let omdbResponse = response.data;
-            let songData = [
-                'title: ' + omdbResponse.Title,
-                'year: ' + omdbResponse.Year,
-                'imdb rating: ' + omdbResponse.imdbRating,
-                //'rotten tomatoes rating: '+omdbResponse.
-                'country: ' + omdbResponse.Country,
-                'language: ' + omdbResponse.Language,
-                'plot: ' + omdbResponse.Plot,
-                'actors: ' + omdbResponse.Actors,
-            ];
-            console.log(songData);
-            fs.appendFileSync('log.txt', songData + '\n', function (err) {
-                if (err) throw err;
-                console.log('Error adding to log.txt file' + err);
+    const authHeaders = {
+        'Authorization': 'Basic ZmExMjZkYzNhNGIzNDZkNmFkMTJlNTYzNzY5YmJmMGU6ODI4NmNkZWQzODJhNDdiNGExMzIwMzBlMzIyMzFhMGI=',
+        'Content-Type': 'application/x-www-form-urlencoded',
+    };
+    const authBody = {
+        'grant_type': 'client_credentials',
+    }
+    axios.post('https://accounts.spotify.com/api/token', qs.stringify(authBody), {
+        headers: authHeaders
+        }).then(function (response) {
+        // console.log(response.data);
+        // console.log(response.data.access_token);
+        accessToken = response.data.access_token;
+        const getHeaders = {
+            'Authorization': 'Bearer ' + accessToken,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+        console.log(accessToken);
+            axios.get('https://api.spotify.com/v1/search?q=' + songSel + '&type=track', {
+                headers: getHeaders
+                }).then(function (response) {
+                    console.log(response);
+                    // let omdbResponse = response.data;
+                    // let songData = [
+                    //     'title: ' + omdbResponse.Title,
+                    //     'year: ' + omdbResponse.Year,
+                    //     'imdb rating: ' + omdbResponse.imdbRating,
+                    //     'country: ' + omdbResponse.Country,
+                    //     'language: ' + omdbResponse.Language,
+                    //     'plot: ' + omdbResponse.Plot,
+                    //     'actors: ' + omdbResponse.Actors,
+                    // ];
+                    // console.log(songData);
+                    // fs.appendFileSync('log.txt', songData + '\n', function (err) {
+                    //     if (err) throw err;
+                    //     console.log('Error adding to log.txt file' + err);
+                }).catch(function (error) {
+                console.log("Error requesting song", error.message);
             });
-        }).catch(function (error) {
-        console.log("Error", error.message);
-    })
 
+    }).catch(function (error) {
+        console.log("Error getting token", error.message);
+    });
+
+    // axios.get('https://api.spotify.com/v1/search?q=' + songSel + '&type=track" -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer ' + accessToken).then(
+    //     function (response) {
+    //         console.log(response);
+    //         // let omdbResponse = response.data;
+    //         // let songData = [
+    //         //     'title: ' + omdbResponse.Title,
+    //         //     'year: ' + omdbResponse.Year,
+    //         //     'imdb rating: ' + omdbResponse.imdbRating,
+    //         //     'country: ' + omdbResponse.Country,
+    //         //     'language: ' + omdbResponse.Language,
+    //         //     'plot: ' + omdbResponse.Plot,
+    //         //     'actors: ' + omdbResponse.Actors,
+    //         // ];
+    //         // console.log(songData);
+    //         // fs.appendFileSync('log.txt', songData + '\n', function (err) {
+    //         //     if (err) throw err;
+    //         //     console.log('Error adding to log.txt file' + err);
+    //     }).catch(function (error) {
+    //     console.log("Error", error.message);
+    // });
 }
 
 function concertFun(concertSel) {
