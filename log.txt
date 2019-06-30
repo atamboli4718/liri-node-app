@@ -31,3 +31,12 @@ name of venue: LADY GAGA ENIGMA,venue location: Las Vegas,date: 2020-05-15T20:00
 name of venue: LADY GAGA JAZZ & PIANO,venue location: Las Vegas,date: 2020-05-16T20:00:00
 title: undefined,year: undefined,imdb rating: undefined,country: undefined,language: undefined,plot: undefined,actors: undefined
 title: undefined,year: undefined,imdb rating: undefined,country: undefined,language: undefined,plot: undefined,actors: undefined
+[object Object]
+title: undefined,year: undefined,imdb rating: undefined,country: undefined,language: undefined,plot: undefined,actors: undefined
+title: Aladdin,year: 1992,imdb rating: 8.0,country: USA,language: English,plot: A kindhearted street urchin and a power-hungry Grand Vizier vie for a magic lamp that has the power to make their deepest wishes come true.,actors: Scott Weinger, Robin Williams, Linda Larkin, Jonathan Freeman
+title: Thelma and Louise,year: 2015,imdb rating: N/A,country: France,language: English,plot: N/A,actors: Lora Dekova, Aida Loutfi
+name of venue: Summer Sonic Osaka [08.16 - 08.18],venue location: Higashi-osaka,date: 2019-08-16T19:00:36
+name of venue: Summer Sonic Tokyo [08.16 - 08.18],venue location: Tokyo,date: 2019-08-17T19:00:37
+name of venue: Singapore Grand Prix,venue location: Singapore,date: 2019-09-22T19:00:31
+name of venue: Ohana Festival [09.27 - 09.29],venue location: Dana Point,date: 2019-09-29T11:00:00
+name of venue: Rock in Rio [09.27 - 10.06],venue location: Rio De Janeiro,date: 2019-10-03T19:00:29

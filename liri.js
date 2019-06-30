@@ -104,9 +104,9 @@ function songFun(songSel) {
     }
     axios.post('https://accounts.spotify.com/api/token', qs.stringify(authBody), {
         headers: authHeaders
-        }).then(function (response) {
-        // console.log(response.data);
-        // console.log(response.data.access_token);
+    }).then(function (response) {
+        console.log(response.data);
+        console.log(response.data.access_token);
         accessToken = response.data.access_token;
         const getHeaders = {
             'Authorization': 'Bearer ' + accessToken,
@@ -114,52 +114,27 @@ function songFun(songSel) {
             'Content-Type': 'application/json',
         }
         console.log(accessToken);
-            axios.get('https://api.spotify.com/v1/search?q=' + songSel + '&type=track', {
-                headers: getHeaders
-                }).then(function (response) {
-                    console.log(response);
-                    // let omdbResponse = response.data;
-                    // let songData = [
-                    //     'title: ' + omdbResponse.Title,
-                    //     'year: ' + omdbResponse.Year,
-                    //     'imdb rating: ' + omdbResponse.imdbRating,
-                    //     'country: ' + omdbResponse.Country,
-                    //     'language: ' + omdbResponse.Language,
-                    //     'plot: ' + omdbResponse.Plot,
-                    //     'actors: ' + omdbResponse.Actors,
-                    // ];
-                    // console.log(songData);
-                    // fs.appendFileSync('log.txt', songData + '\n', function (err) {
-                    //     if (err) throw err;
-                    //     console.log('Error adding to log.txt file' + err);
-                }).catch(function (error) {
+        axios.get('https://api.spotify.com/v1/search?q=' + songSel + '&type=track', {
+            headers: getHeaders
+        }).then(function (response) {
+            let spotifyResponse = response.data;
+            let songData = {
+                artists: spotifyResponse.tracks.items[0].album.artists[0].name,
+                link: spotifyResponse.tracks.items[0].album.external_urls,
+                album: spotifyResponse.tracks.items[0].album.name,
+                songName: spotifyResponse.tracks.items[0].name,
+            };
+            console.log(songData);
+            fs.appendFileSync('log.txt', songData + '\n', function (err) {
+                if (err) throw err;
+                console.log('Error adding to log.txt file' + err);
+            }).catch(function (error) {
                 console.log("Error requesting song", error.message);
             });
-
-    }).catch(function (error) {
-        console.log("Error getting token", error.message);
-    });
-
-    // axios.get('https://api.spotify.com/v1/search?q=' + songSel + '&type=track" -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer ' + accessToken).then(
-    //     function (response) {
-    //         console.log(response);
-    //         // let omdbResponse = response.data;
-    //         // let songData = [
-    //         //     'title: ' + omdbResponse.Title,
-    //         //     'year: ' + omdbResponse.Year,
-    //         //     'imdb rating: ' + omdbResponse.imdbRating,
-    //         //     'country: ' + omdbResponse.Country,
-    //         //     'language: ' + omdbResponse.Language,
-    //         //     'plot: ' + omdbResponse.Plot,
-    //         //     'actors: ' + omdbResponse.Actors,
-    //         // ];
-    //         // console.log(songData);
-    //         // fs.appendFileSync('log.txt', songData + '\n', function (err) {
-    //         //     if (err) throw err;
-    //         //     console.log('Error adding to log.txt file' + err);
-    //     }).catch(function (error) {
-    //     console.log("Error", error.message);
-    // });
+        }).catch(function (error) {
+            console.log("Error getting token", error.message);
+        });
+    })
 }
 
 function concertFun(concertSel) {
@@ -181,5 +156,4 @@ function concertFun(concertSel) {
         }).catch(function (error) {
         console.log("Error", error.message);
     })
-
 }
