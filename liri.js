@@ -74,16 +74,34 @@ function movieFun(movieSel) {
     axios.get('http://www.omdbapi.com/?t=' + movieSel + '&apikey=' + omdbKey).then(
         function (response) {
             let omdbResponse = response.data;
-            let movieData = [
-                'title: ' + omdbResponse.Title,
-                'year: ' + omdbResponse.Year,
-                'imdb rating: ' + omdbResponse.imdbRating,
-                //'rotten tomatoes rating: '+omdbResponse.
-                'country: ' + omdbResponse.Country,
-                'language: ' + omdbResponse.Language,
-                'plot: ' + omdbResponse.Plot,
-                'actors: ' + omdbResponse.Actors,
-            ];
+            let realMoviecheck = response.data.Response;
+            console.log(realMoviecheck);
+            let movieData;
+            if (!realMoviecheck){
+                movieData = [
+                    'title: ' + omdbResponse.Title,
+                    'year: ' + omdbResponse.Year,
+                    'imdb rating: ' + omdbResponse.imdbRating,
+                    'rotten tomatoes: ' +omdbResponse.Ratings[1].Value,
+                    'country: ' + omdbResponse.Country,
+                    'language: ' + omdbResponse.Language,
+                    'plot: ' + omdbResponse.Plot,
+                    'actors: ' + omdbResponse.Actors,
+                ];
+            } else {
+                console.log("We couldn't find that movie, but here's some information on Mr. Nobody.")
+                movieData = [
+                    'title: ' +'Mr. Nobody',
+                    'year: ' + '2009',
+                    'imdb rating: ' + '7.8',
+                    'rotten tomatoes: ' + '67%',
+                    'country: ' + 'Belgium, Germany, Canada, France, USA, UK',
+                    'language: ' + 'English, Mohawk',
+                    'plot: ' + "A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.",
+                    'actors: ' + 'Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham',
+                ];
+
+            }
             console.log(movieData);
             fs.appendFileSync('log.txt', movieData + '\n', function (err) {
                 if (err) throw err;
@@ -118,18 +136,29 @@ function songFun(songSel) {
             headers: getHeaders
         }).then(function (response) {
             let spotifyResponse = response.data;
-            let songData = {
-                artists: spotifyResponse.tracks.items[0].album.artists[0].name,
-                link: spotifyResponse.tracks.items[0].album.external_urls,
-                album: spotifyResponse.tracks.items[0].album.name,
-                songName: spotifyResponse.tracks.items[0].name,
+            let songData;
+            let realSongCheck = spotifyResponse.tracks.items.length;
+            if (!realSongCheck==0){
+                songData = {
+                    artists: spotifyResponse.tracks.items[0].album.artists[0].name,
+                    link: spotifyResponse.tracks.items[0].album.external_urls,
+                    album: spotifyResponse.tracks.items[0].album.name,
+                    songName: spotifyResponse.tracks.items[0].name,
+                };
+            }else {
+                console.log("We couldn't find that song, so here's information on The Sign. You're Welcome.");
+                songData = {
+                    artists: 'Ace of Base',
+                    link: 'https://open.spotify.com/album/0nQFgMfnmWrcWDOQqIgJL7',
+                    album: 'Happy Nation',
+                    songName: 'The Sign',
+                };
+
             };
             console.log(songData);
             fs.appendFileSync('log.txt', songData + '\n', function (err) {
                 if (err) throw err;
                 console.log('Error adding to log.txt file' + err);
-            }).catch(function (error) {
-                console.log("Error requesting song", error.message);
             });
         }).catch(function (error) {
             console.log("Error getting token", error.message);
