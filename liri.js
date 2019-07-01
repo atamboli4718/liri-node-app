@@ -77,7 +77,7 @@ function movieFun(movieSel) {
             let realMoviecheck = response.data.Response;
             console.log(realMoviecheck);
             let movieData;
-            if (!realMoviecheck){
+            if (realMoviecheck){
                 movieData = [
                     'title: ' + omdbResponse.Title,
                     'year: ' + omdbResponse.Year,
