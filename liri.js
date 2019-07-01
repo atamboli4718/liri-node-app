@@ -75,9 +75,10 @@ function movieFun(movieSel) {
         function (response) {
             let omdbResponse = response.data;
             let realMoviecheck = response.data.Response;
-            console.log(realMoviecheck);
+            // console.log(realMoviecheck);
+            // console.log(response.data);
             let movieData;
-            if (realMoviecheck){
+            if (realMoviecheck === 'True'){
                 movieData = [
                     'title: ' + omdbResponse.Title,
                     'year: ' + omdbResponse.Year,
@@ -89,7 +90,7 @@ function movieFun(movieSel) {
                     'actors: ' + omdbResponse.Actors,
                 ];
             } else {
-                console.log("We couldn't find that movie, but here's some information on Mr. Nobody.")
+                console.log("We couldn't find that movie, but here's some information on Mr. Nobody.");
                 movieData = [
                     'title: ' +'Mr. Nobody',
                     'year: ' + '2009',
@@ -100,7 +101,6 @@ function movieFun(movieSel) {
                     'plot: ' + "A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.",
                     'actors: ' + 'Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham',
                 ];
-
             }
             console.log(movieData);
             fs.appendFileSync('log.txt', movieData + '\n', function (err) {
@@ -123,15 +123,15 @@ function songFun(songSel) {
     axios.post('https://accounts.spotify.com/api/token', qs.stringify(authBody), {
         headers: authHeaders
     }).then(function (response) {
-        console.log(response.data);
-        console.log(response.data.access_token);
+        //console.log(response.data);
+        //console.log(response.data.access_token);
         accessToken = response.data.access_token;
         const getHeaders = {
             'Authorization': 'Bearer ' + accessToken,
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         }
-        console.log(accessToken);
+        //console.log(accessToken);
         axios.get('https://api.spotify.com/v1/search?q=' + songSel + '&type=track', {
             headers: getHeaders
         }).then(function (response) {
