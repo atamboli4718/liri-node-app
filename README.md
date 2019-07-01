@@ -1,20 +1,24 @@
-#Overview
+# OVERVIEW
 This app displays information based on user inputs for movies, songs, and concerts. The purpose of this app was to strengthen Nodejs skills, JavaScript, and API's.
 
-#Technologies used
-**JavaScript**
-**Nodejs**
-**BandsInTown API**
-**Spotify API**
-**OMDB API**
-**Node Packages**
-    - Axios
-    - DOTEMV
-    - Inquirer
-    - Moment
-    - Node-Spotify-api
+# TECHNOLOGIES USED
+<ul>
+<li>JavaScript</li>
+<li>Nodejs</li>
+<li>BandsInTown API</li>
+<li>Spotify API</li>
+<li>OMDB API</li>
+<li>Node Packages</li>
+    <ul>
+        <li>Axios</li>
+        <li>DOTEMV</li>
+        <li>Inquirer</li>
+        <li>Moment</li>
+        <li>Node-Spotify-api</li>
+    </ul>
+</ul>
 
-#Use and screenshots:
+# USE AND SCREENSHOTS:
 When then user enters the app, they will be asked "What can I help you with today?" 
 
 ![](images/firstQuestion.png)
@@ -45,6 +49,6 @@ The user also has the option of selecting a concert. If they do so, they will se
 
 All results are also pushed to a log.txt file. 
 
-##Contact information
+## CONTACT INFORMATION
 Cell: 251-689-1409 
 Email: atamboli4718@gmail.com
