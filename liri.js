@@ -139,20 +139,20 @@ function songFun(songSel) {
             let songData;
             let realSongCheck = spotifyResponse.tracks.items.length;
             if (!realSongCheck==0){
-                songData = {
-                    artists: spotifyResponse.tracks.items[0].album.artists[0].name,
-                    link: spotifyResponse.tracks.items[0].album.external_urls,
-                    album: spotifyResponse.tracks.items[0].album.name,
-                    songName: spotifyResponse.tracks.items[0].name,
-                };
+                songData = [
+                    'artists: '+ spotifyResponse.tracks.items[0].album.artists[0].name,
+                    'link: ' + spotifyResponse.tracks.items[0].album.external_urls,
+                    'album: ' + spotifyResponse.tracks.items[0].album.name,
+                    'songName: ' + spotifyResponse.tracks.items[0].name,
+                ];
             }else {
                 console.log("We couldn't find that song, so here's information on The Sign. You're Welcome.");
-                songData = {
-                    artists: 'Ace of Base',
-                    link: 'https://open.spotify.com/album/0nQFgMfnmWrcWDOQqIgJL7',
-                    album: 'Happy Nation',
-                    songName: 'The Sign',
-                };
+                songData = [
+                    'artists: Ace of Base',
+                    'link: https://open.spotify.com/album/0nQFgMfnmWrcWDOQqIgJL7',
+                    'album: Happy Nation',
+                    'songName: The Sign',
+                ];
 
             };
             console.log(songData);
